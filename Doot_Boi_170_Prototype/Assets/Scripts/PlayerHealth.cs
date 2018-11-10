@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour {
     public Slider healthBar;
 	
 	void Start () {
-        MaxHealth = 20f;
+        MaxHealth = 60f;
         CurrentHealth = MaxHealth;
 
         healthBar.value = CalculateHealth();
@@ -24,15 +24,15 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
     // If you uncomment this code then CollisionTest works
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-        //GameObject obj = collision.gameObject;
-        //if (obj.tag == "Projectile")
-        //{
-        //    DealDamage(6);
-        //    Destroy(obj);
-        //}
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject obj = collision.gameObject;
+        if (obj.tag == "Projectile")
+        {
+            DealDamage(6);
+            Destroy(obj);
+        }
+    }
 
     void DealDamage(float damageValue)
     {

@@ -6,7 +6,7 @@ public class Aster : MonoBehaviour {
 
 
     private void OnBecameInvisible() {
-        print(this.name + " is invisible");
+        // print(this.name + " is invisible");
         Destroy(this.gameObject);
     }
 }
