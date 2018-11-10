@@ -6,7 +6,7 @@ public class GravColliderScript : MonoBehaviour {
 
     public string type;
     private GameObject parent;
-    private float sizemod;
+    public float sizemod;
 
 	// Use this for initialization
 	void Start () {
@@ -35,31 +35,46 @@ public class GravColliderScript : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (type == "PlayerField" && obj.tag == "Collectable")
+        if (type == "PlayerField" && obj.tag == "Collectable" && obj.GetComponent<OrbitMotion>().orbitActive == false && obj.GetComponent<MoonScript>().releasetimer == 0)
         {
+            //Add the moon to the orbit
             obj.transform.parent = parent.transform;
             OrbitMotion newcircle = obj.GetComponent<OrbitMotion>();
             newcircle.orbitPath = new Ellipse((2f+sizemod)/2, (2f+sizemod)/2);
             newcircle.orbitProgress = FindDegree(obj.transform.localPosition.x, obj.transform.localPosition.y)/360;
-            newcircle.enabled = true;
+            newcircle.orbitActive = true;
             sizemod += 1f;
             newcircle.orbitPeriod = sizemod + 3f;
-            this.transform.localScale = new Vector3(2f + sizemod, 2f + sizemod, 1);
-            this.GetComponent<CircleCollider2D>().radius = 0.5f*(((2f+sizemod-.3f)/2)/((2f+sizemod)/2));
+            newcircle.enabled = true;
+            //Add the moon to the planet controls
+            this.parent.GetComponent<PlayerMovement>().claimedObjects.Add(obj);
+            if (this.parent.GetComponent<PlayerMovement>().player == 1)
+            {
+                obj.transform.GetChild(1).GetComponent<TextMesh>().text = this.parent.GetComponent<PlayerMovement>().claimedObjects.Count.ToString();
+            }
+            else if (this.parent.GetComponent<PlayerMovement>().player == 2)
+            {
+                obj.transform.GetChild(1).GetComponent<TextMesh>().text = "N" + this.parent.GetComponent<PlayerMovement>().claimedObjects.Count.ToString();
+            }
+            updateRange();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (type == "MoonField" && obj.tag == "Projectile")
+        if (type == "MoonField" && obj.tag == "Projectile" && obj.GetComponent<OrbitMotion>().orbitActive == false && obj.GetComponent<ProjScript>().releasetimer == 0)
         {
+            //Add the projectile to the orbit
             obj.transform.parent = parent.transform;
             OrbitMotion newcircle = obj.GetComponent<OrbitMotion>();
             newcircle.orbitPath = new Ellipse(1f, 1f);
             newcircle.orbitProgress = FindDegree(obj.transform.localPosition.x, obj.transform.localPosition.y) / 360;
             newcircle.orbitPeriod = 2f;
+            newcircle.orbitActive = true;
             newcircle.enabled = true;
+            //Add the projectile to the moon list
+            this.parent.GetComponent<MoonScript>().claimedObjects.Add(obj);
         }
     }
 
@@ -68,5 +83,11 @@ public class GravColliderScript : MonoBehaviour {
         float value = (float)((System.Math.Atan2(x, y) / System.Math.PI) * 180f);
         if (value < 0) value += 360f;
         return value;
+    }
+
+    public void updateRange()
+    {
+        this.transform.localScale = new Vector3(2f + sizemod, 2f + sizemod, 1);
+        this.GetComponent<CircleCollider2D>().radius = 0.5f * (((2f + sizemod - .3f) / 2) / ((2f + sizemod) / 2));
     }
 }

@@ -74,9 +74,12 @@ MonoBehaviour:
     xAxis: 0
     yAxis: 0
   test: 0
+  releasetimer: 0
   orbitProgress: 0
   orbitPeriod: 5
   orbitActive: 1
+  velocity: {x: 0, y: 0, z: 0}
+  lastpos: {x: 0, y: 0, z: 0}
 --- !u!114 &114483924703588076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a663aea37cd6423ca1bdd4260038cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroids: []
 --- !u!212 &212095517125950346
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,7 +125,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 487361e9933dfae48b041f33f6ad16e1, type: 3}
   m_Color: {r: 0.4528302, g: 0.24827994, b: 0.1516554, a: 1}
   m_FlipX: 0

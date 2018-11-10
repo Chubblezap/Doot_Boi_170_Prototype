@@ -12,13 +12,18 @@ public class OrbitMotion : MonoBehaviour {
     [Range(0f, 1f)]
     public float orbitProgress;
     public float orbitPeriod = 5f;
-    public bool orbitActive = true;
+    public bool orbitActive;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        
+    }
+
+    private void OnEnable()
+    {
         SetOrbitingObjectPosition();
         StartCoroutine(AnimateOrbit());
-	}
+    }
 
     void SetOrbitingObjectPosition() {
         Vector2 orbitPos = orbitPath.Evaluate(orbitProgress);

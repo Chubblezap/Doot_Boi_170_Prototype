@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114493161384858296}
   - component: {fileID: 58839844430856354}
   - component: {fileID: 114349105966258902}
+  - component: {fileID: 50608244987842920}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Collectable
@@ -43,6 +44,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50608244987842920
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945404698945322}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58839844430856354
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -71,6 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GravCollider: {fileID: 1334172649653938, guid: 9ad799b32ae63514eb65b46c9ec0a760,
     type: 2}
+  ctrlText: {fileID: 1145254509265414, guid: 6c85f74976907f145bdb07948edf6787, type: 2}
+  claimedObjects: []
 --- !u!114 &114493161384858296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,9 +110,12 @@ MonoBehaviour:
     xAxis: 0
     yAxis: 0
   test: 0
+  releasetimer: 0
   orbitProgress: 0
   orbitPeriod: 5
-  orbitActive: 1
+  orbitActive: 0
+  velocity: {x: 0, y: 0, z: 0}
+  lastpos: {x: 0, y: 0, z: 0}
 --- !u!212 &212568507472166472
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +150,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 487361e9933dfae48b041f33f6ad16e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
