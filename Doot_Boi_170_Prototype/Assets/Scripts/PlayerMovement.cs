@@ -122,12 +122,12 @@ public class PlayerMovement : MonoBehaviour
             GameObject thismoon = claimedObjects[1];
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
-                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[0];
+                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count-1];
                 thrownprojectile.transform.parent = null;
                 thrownprojectile.GetComponent<OrbitMotion>().orbitActive = false;
                 thrownprojectile.GetComponent<OrbitMotion>().enabled = false;
                 thrownprojectile.GetComponent<ProjScript>().releasetimer = 0.5f;
-                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(0);
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
             }
             keytimer[1] = 1;
         }
@@ -136,12 +136,12 @@ public class PlayerMovement : MonoBehaviour
             GameObject thismoon = claimedObjects[2];
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
-                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[0];
+                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];
                 thrownprojectile.transform.parent = null;
                 thrownprojectile.GetComponent<OrbitMotion>().orbitActive = false;
                 thrownprojectile.GetComponent<OrbitMotion>().enabled = false;
                 thrownprojectile.GetComponent<ProjScript>().releasetimer = 0.5f;
-                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(0);
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
             }
             keytimer[2] = 1;
         }
@@ -150,12 +150,12 @@ public class PlayerMovement : MonoBehaviour
             GameObject thismoon = claimedObjects[3];
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
-                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[0];
+                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];
                 thrownprojectile.transform.parent = null;
                 thrownprojectile.GetComponent<OrbitMotion>().orbitActive = false;
                 thrownprojectile.GetComponent<OrbitMotion>().enabled = false;
                 thrownprojectile.GetComponent<ProjScript>().releasetimer = 0.5f;
-                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(0);
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
             }
             keytimer[3] = 1;
         }
@@ -164,12 +164,12 @@ public class PlayerMovement : MonoBehaviour
             GameObject thismoon = claimedObjects[4];
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
-                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[0];
+                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];
                 thrownprojectile.transform.parent = null;
                 thrownprojectile.GetComponent<OrbitMotion>().orbitActive = false;
                 thrownprojectile.GetComponent<OrbitMotion>().enabled = false;
                 thrownprojectile.GetComponent<ProjScript>().releasetimer = 0.5f;
-                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(0);
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
             }
             keytimer[4] = 1;
         }
@@ -178,12 +178,12 @@ public class PlayerMovement : MonoBehaviour
             GameObject thismoon = claimedObjects[5];
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
-                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[0];
+                GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];
                 thrownprojectile.transform.parent = null;
                 thrownprojectile.GetComponent<OrbitMotion>().orbitActive = false;
                 thrownprojectile.GetComponent<OrbitMotion>().enabled = false;
                 thrownprojectile.GetComponent<ProjScript>().releasetimer = 0.5f;
-                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(0);
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
             }
             keytimer[5] = 1;
         }
