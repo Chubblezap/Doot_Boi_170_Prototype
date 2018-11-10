@@ -21,7 +21,7 @@ public class MoonScript : MonoBehaviour {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Projectile")
         {
-            Destroy(obj);
+        //    Destroy(obj);
         }
     }
 }
