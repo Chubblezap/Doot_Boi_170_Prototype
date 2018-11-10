@@ -53,7 +53,7 @@ public class GravColliderScript : MonoBehaviour {
     {
         GameObject obj = collision.gameObject;
         if (type == "MoonField" && obj.tag == "Projectile")
-        {
+        { 
             obj.transform.parent = parent.transform;
             OrbitMotion newcircle = obj.GetComponent<OrbitMotion>();
             newcircle.orbitPath = new Ellipse(1f, 1f);
