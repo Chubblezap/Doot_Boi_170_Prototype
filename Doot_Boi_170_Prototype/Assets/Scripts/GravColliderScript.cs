@@ -63,9 +63,14 @@ public class GravColliderScript : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
+<<<<<<< HEAD
         if (type == "MoonField" && obj.tag == "Projectile" && obj.GetComponent<OrbitMotion>().orbitActive == false && obj.GetComponent<ProjScript>().releasetimer == 0)
         {
             //Add the projectile to the orbit
+=======
+        if (type == "MoonField" && obj.tag == "Projectile")
+        { 
+>>>>>>> c4ff064df462cb459e652effab600f19396eb2b3
             obj.transform.parent = parent.transform;
             OrbitMotion newcircle = obj.GetComponent<OrbitMotion>();
             newcircle.orbitPath = new Ellipse(1f, 1f);
