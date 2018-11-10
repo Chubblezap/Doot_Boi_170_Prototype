@@ -23,16 +23,6 @@ public class PlayerHealth : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.X)) DealDamage(6);
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        GameObject obj = collision.gameObject;
-        if (obj.tag == "Projectile")
-        {
-            DealDamage(6);
-            Destroy(obj);
-        }
-    }
-
     void DealDamage(float damageValue)
     {
         CurrentHealth -= damageValue;
