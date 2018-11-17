@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
     public float CurrentHealth { get; set; }
@@ -17,9 +18,9 @@ public class PlayerHealth : MonoBehaviour {
         CurrentHealth = MaxHealth;
 
         healthBar.value = CalculateHealth();
-	}
-    
-	void Update () {
+    }
+
+    void Update () {
         if (Input.GetKeyDown(KeyCode.X)) DealDamage(6);
 	}
 
@@ -50,5 +51,8 @@ public class PlayerHealth : MonoBehaviour {
     {
         CurrentHealth = 0;
         Debug.Log("You are dead.");
+
+        //Switch to GameOver scene
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 }
