@@ -9,6 +9,9 @@ public class AsteroidManager : MonoBehaviour {
     public Transform[] spawnLocation;
     public Aster[] asteroids;
     private int rndInt;
+    private int randomizer;
+
+    public Sprite[] spr = new Sprite[20];
 
 
     // Use this for initialization
@@ -34,5 +37,7 @@ public class AsteroidManager : MonoBehaviour {
         GameObject newRock = Instantiate(Asteroid, spawnLocation[rndInt].position, spawnLocation[rndInt].rotation);
         newRock.GetComponent<OrbitMotion>().enabled = false;
         newRock.GetComponent<ProjScript>().velocity = new Vector3(Random.Range(0.1f, 1.0f), Random.Range(0.5f, 1.0f), 0);
+        randomizer = Random.Range(0, 20);
+        newRock.GetComponent<SpriteRenderer>().sprite = spr[randomizer];
 	}
 }

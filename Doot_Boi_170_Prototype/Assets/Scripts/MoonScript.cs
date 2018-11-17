@@ -12,6 +12,8 @@ public class MoonScript : MonoBehaviour {
     public Vector3 lastpos;
     public float releasetimer;
 
+    public Sprite[] spr = new Sprite[3];
+
     // Use this for initialization
     void Start () {
         releasetimer = 0;
@@ -20,6 +22,10 @@ public class MoonScript : MonoBehaviour {
         txtref = Instantiate(ctrlText, transform.localPosition, Quaternion.identity, this.transform);
         txtref.GetComponent<TextMesh>().text = "";
         txtref.GetComponent<TextMesh>().fontSize = 250;
+
+        // Set random moon sprite
+        int rnd = Random.Range(0, 3);
+        GetComponent<SpriteRenderer>().sprite = spr[rnd];
     }
 	
 	// Update is called once per frame

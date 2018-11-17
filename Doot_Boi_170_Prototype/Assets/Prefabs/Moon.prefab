@@ -94,6 +94,13 @@ MonoBehaviour:
     type: 2}
   ctrlText: {fileID: 1145254509265414, guid: 6c85f74976907f145bdb07948edf6787, type: 2}
   claimedObjects: []
+  velocity: {x: 0, y: 0, z: 0}
+  lastpos: {x: 0, y: 0, z: 0}
+  releasetimer: 0
+  spr:
+  - {fileID: 21300000, guid: 38550f9d0e2bbff41a88921ee5c29c9d, type: 3}
+  - {fileID: 21300000, guid: 197123c3be48ccb46b232a45478b5ee5, type: 3}
+  - {fileID: 21300000, guid: 36948a4e99426e44ab37b573f570c6d2, type: 3}
 --- !u!114 &114493161384858296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,12 +117,9 @@ MonoBehaviour:
     xAxis: 0
     yAxis: 0
   test: 0
-  releasetimer: 0
   orbitProgress: 0
   orbitPeriod: 5
   orbitActive: 0
-  velocity: {x: 0, y: 0, z: 0}
-  lastpos: {x: 0, y: 0, z: 0}
 --- !u!212 &212568507472166472
 SpriteRenderer:
   m_ObjectHideFlags: 1
