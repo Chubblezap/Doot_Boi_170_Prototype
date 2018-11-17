@@ -107,7 +107,7 @@ MonoBehaviour:
   ctrlText: {fileID: 1145254509265414, guid: 6c85f74976907f145bdb07948edf6787, type: 2}
   claimedObjects: []
   player: 1
-  movementSpeed: 100
+  movementSpeed: 150
 --- !u!212 &212368666417461348
 SpriteRenderer:
   m_ObjectHideFlags: 1
