@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sr; //the sprite renderer of the player
     private bool keyLeft, keyRight, keyUp, keyDown, key1, key2, key3, key4, key5, key6, keyMode;
     private float[] keytimer;
+    private bool[] keyWasPressed;
     public float movementSpeed;
 
     // Use this for initialization
@@ -24,9 +25,10 @@ public class PlayerMovement : MonoBehaviour
     {
         claimedObjects.Add(this.gameObject);
         keytimer = new float[] { 0, 0, 0, 0, 0, 0 };
+        keyWasPressed = new bool[] { false, false, false, false, false, false };
         gravref = Instantiate(GravCollider, transform.localPosition, Quaternion.identity, this.transform);
         gravref.GetComponent<SpriteRenderer>().sortingOrder = -5;
-        gravref.GetComponent<SpriteRenderer>().color = new Color (0,1,1,0.3f);
+        gravref.GetComponent<SpriteRenderer>().color = new Color (0,1,1,0.7f);
         txtref = Instantiate(ctrlText, transform.localPosition, Quaternion.identity, this.transform);
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -106,8 +108,13 @@ public class PlayerMovement : MonoBehaviour
     //Use moons to throw projectiles or activate abilities
     void UseMoons()
     {
-        if (key1 == true && keytimer[0] <= 0 && claimedObjects.Count > 1)
+        if (key1 == true)
         {
+            keyWasPressed[0] = true;
+        }
+        else if (keyWasPressed[0] == true && key1 == false && keytimer[0] <= 0 && claimedObjects.Count > 1)
+        {
+            keyWasPressed[0] = false;
             GameObject thrownmoon = claimedObjects[claimedObjects.Count - 1];
             thrownmoon.transform.parent = null;
             thrownmoon.GetComponent<OrbitMotion>().orbitActive = false;
@@ -119,9 +126,27 @@ public class PlayerMovement : MonoBehaviour
             this.transform.GetChild(0).GetComponent<GravColliderScript>().updateRange();
             keytimer[0] = 1;
         }
-        if (key2 == true && keytimer[1] <= 0 && claimedObjects.Count >= 2)
+        if (key2 == true)
         {
+            keyWasPressed[1] = true;
             GameObject thismoon = claimedObjects[1];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
+            if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
+            {
+            //    thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1].GetComponent<ProjScript>().arrowref.GetComponent<SpriteRenderer>().enabled = true;
+            }
+        }
+        else if (keyWasPressed[1] == true && key2 == false && keytimer[1] <= 0 && claimedObjects.Count >= 2)
+        {
+            keyWasPressed[1] = false;
+            GameObject thismoon = claimedObjects[1];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
                 GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count-1];
@@ -133,9 +158,27 @@ public class PlayerMovement : MonoBehaviour
             }
             keytimer[1] = 1;
         }
-        if (key3 == true && keytimer[2] <= 0 && claimedObjects.Count >= 3)
+        if (key3 == true)
         {
+            keyWasPressed[2] = true;
             GameObject thismoon = claimedObjects[2];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
+            if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
+            {
+            //    thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1].GetComponent<ProjScript>().arrowref.GetComponent<SpriteRenderer>().enabled = true;
+            }
+        }
+        else if (keyWasPressed[2] == true && key3 == false && keytimer[2] <= 0 && claimedObjects.Count >= 3)
+        {
+            keyWasPressed[2] = false;
+            GameObject thismoon = claimedObjects[2];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
                 GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];
@@ -147,9 +190,27 @@ public class PlayerMovement : MonoBehaviour
             }
             keytimer[2] = 1;
         }
-        if (key4 == true && keytimer[3] <= 0 && claimedObjects.Count >= 4)
+        if (key4 == true)
         {
+            keyWasPressed[3] = true;
             GameObject thismoon = claimedObjects[3];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
+            if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
+            {
+            //    thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1].GetComponent<ProjScript>().arrowref.GetComponent<SpriteRenderer>().enabled = true;
+            }
+        }
+        else if (keyWasPressed[3] == true && key4 == false && keytimer[3] <= 0 && claimedObjects.Count >= 4)
+        {
+            keyWasPressed[3] = false;
+            GameObject thismoon = claimedObjects[3];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
                 GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];
@@ -161,9 +222,27 @@ public class PlayerMovement : MonoBehaviour
             }
             keytimer[3] = 1;
         }
-        if (key5 == true && keytimer[4] <= 0 && claimedObjects.Count >= 5)
+        if (key5 == true)
         {
+            keyWasPressed[4] = true;
             GameObject thismoon = claimedObjects[4];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
+            if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
+            {
+            //    thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1].GetComponent<ProjScript>().arrowref.GetComponent<SpriteRenderer>().enabled = true;
+            }
+        }
+        else if (keyWasPressed[4] == true && key5 == false && keytimer[4] <= 0 && claimedObjects.Count >= 5)
+        {
+            keyWasPressed[4] = false;
+            GameObject thismoon = claimedObjects[4];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
                 GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];
@@ -175,9 +254,27 @@ public class PlayerMovement : MonoBehaviour
             }
             keytimer[4] = 1;
         }
-        if (key6 == true && keytimer[5] <= 0 && claimedObjects.Count >= 6)
+        if (key6 == true)
         {
+            keyWasPressed[5] = true;
             GameObject thismoon = claimedObjects[5];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
+            if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
+            {
+            //    thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1].GetComponent<ProjScript>().arrowref.GetComponent<SpriteRenderer>().enabled = true;
+            }
+        }
+        else if (keyWasPressed[5] == true && key6 == false && keytimer[5] <= 0 && claimedObjects.Count >= 6)
+        {
+            keyWasPressed[5] = false;
+            GameObject thismoon = claimedObjects[5];
+            while (thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1] == null)
+            {
+                thismoon.GetComponent<MoonScript>().claimedObjects.RemoveAt(thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1);
+            }
             if (thismoon.GetComponent<MoonScript>().claimedObjects.Count > 0)
             {
                 GameObject thrownprojectile = thismoon.GetComponent<MoonScript>().claimedObjects[thismoon.GetComponent<MoonScript>().claimedObjects.Count - 1];

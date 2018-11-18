@@ -7,12 +7,16 @@ public class ProjScript : MonoBehaviour {
     public Vector3 velocity;
     public Vector3 lastpos;
     public float releasetimer;
+    //public GameObject arrow;
+    //public GameObject arrowref;
 
 
     // Use this for initialization
     void Start () {
         releasetimer = 0;
         lastpos = new Vector3(0, 0, 0);
+        //arrowref = Instantiate(arrow, transform.localPosition, Quaternion.identity, this.transform);
+        //arrowref.GetComponent<SpriteRenderer>().enabled = false;
     }
 	
 	// Update is called once per frame
@@ -27,10 +31,15 @@ public class ProjScript : MonoBehaviour {
             lastpos.x = transform.position.x;
             lastpos.y = transform.position.y;
             lastpos.z = transform.position.z;
+            //arrowref.transform.eulerAngles = new Vector3(0, 0, Vector3.Angle(this.transform.forward, velocity));
         }
         else
         {
             transform.Translate(Time.deltaTime * velocity.x, Time.deltaTime * velocity.y, 0);
+            //if (arrowref.GetComponent<SpriteRenderer>().enabled == true)
+            //{
+            //    arrowref.GetComponent<SpriteRenderer>().enabled = false;
+            //}
         }
     }
 
