@@ -93,6 +93,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   lastpos: {x: 0, y: 0, z: 0}
   releasetimer: 0
+  arrow: {fileID: 1555737759872180, guid: 03d766f8523da3147a1ea44161cc129d, type: 2}
+  arrowref: {fileID: 0}
 --- !u!114 &114483924703588076
 MonoBehaviour:
   m_ObjectHideFlags: 1

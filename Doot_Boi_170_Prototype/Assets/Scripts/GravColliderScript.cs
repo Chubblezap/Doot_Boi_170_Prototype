@@ -65,6 +65,7 @@ public class GravColliderScript : MonoBehaviour {
         GameObject obj = collision.gameObject;
         if (type == "MoonField" && obj.tag == "Projectile" && obj.GetComponent<OrbitMotion>().orbitActive == false && obj.GetComponent<ProjScript>().releasetimer == 0)
         {
+            obj.transform.rotation = Quaternion.identity;
             //Add the projectile to the orbit
             obj.transform.parent = parent.transform;
             OrbitMotion newcircle = obj.GetComponent<OrbitMotion>();
